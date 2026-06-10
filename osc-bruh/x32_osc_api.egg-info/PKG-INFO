@@ -1,0 +1,116 @@
+Metadata-Version: 2.4
+Name: x32-osc-api
+Version: 0.1.0
+Summary: Python OSC control library for Behringer X32 and Midas M32 mixers
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+
+# X32 OSC API
+
+Python library for controlling a Behringer X32 / Midas M32 digital mixer over OSC (UDP port 10023).
+
+```
+pip install .
+```
+
+## Quick Start
+
+```python
+from x32 import X32
+
+x = X32("192.168.0.108")
+
+# Console info
+print(x.info)    # {'version': 'V2.07', 'model': 'X32C', 'fw': '4.08'}
+print(x.status)  # {'state': 'active', 'ip': '...', 'name': '...'}
+
+# Channels
+ch1 = x.ch(1)
+ch1.name                 # "sE7 L"
+ch1.fader                # 0.0 .. 1.0
+ch1.fader_db             # -90 .. +10 dB
+ch1.on                   # True / False
+ch1.pan                  # -1.0 .. 1.0
+ch1.mute()
+ch1.unmute()
+
+# EQ
+eq = ch1.eq
+eq.on                    # bypass
+band = eq[1]
+band.f = 5000            # Hz
+band.g = -3.0            # dB
+band.q = 0.7
+band.type = "Peak"       # "Peak", "LShelf", "HShelf", etc.
+
+# Dynamics
+gate = ch1.gate          # /ch/../gate
+dyn = ch1.dyn            # /ch/../dyn (compressor)
+gate.on = True
+gate.thr = -30           # dB threshold
+gate.ratio = 4.0
+gate.attack = 0.5        # ms
+gate.release = 100       # ms
+
+# Buses, Matrix, Main
+x.bus(1).fader = 0.75
+x.mtx(1).fader = 0.5
+x.main_st.fader = 0.75   # 0 dB
+x.main_m.on = True
+
+# DCA groups
+x.dca(1).fader = 1.0
+
+# FX
+x.fx_type(1)             # FX algorithm in slot 1
+x.fx_param(1, 1)         # FX parameter value
+x.fx_set_param(1, 1, 50)
+
+# Scenes, Cues, Snippets
+x.go_scene(1)
+x.go_cue(3)
+x.go_snippet(2)
+
+# USB recorder (when USB stick mounted)
+x.usb.is_mounted         # bool
+x.usb.path               # current directory
+x.usb.list_dir()         # list of Entry(pos, name, is_dir)
+x.usb.go_root()
+x.usb.enter("Arcane")
+x.usb.play(5)            # start playback of entry 5
+x.usb.stop()
+x.usb.pause()
+x.usb.next_track()
+
+# Headamps
+x.headamp(0)             # {gain: ..., phantom: ...}
+x.set_headamp(0, gain=35, phantom=True)
+
+# Status
+x.selidx                 # selected channel index
+x.solo                   # solo active?
+x.lock                   # panel locked?
+
+# OSC configuration
+x.xremote(on=True)       # enable live updates
+x.subscribe("/ch/01/mix/fader")
+
+x.close()
+```
+
+## X32C (Core) Notes
+
+The X32C rack-mount version does **not** respond to certain read queries:
+- `/ch/../mix/fader`      — fader level on input channels
+- `/ch/../eq/on`          — EQ bypass state
+- `/ch/../eq/1/type`      — EQ band filter type
+- `/ch/../gate/ratio`     — gate ratio
+
+Bus faders, main fader, channel on/pan, EQ f/g/q, and gate on/thr/attack/release all work. Write operations (`set`) work for all paths.
+
+## CLI
+
+```bash
+python3 x32.py [host]          # quick diagnostic
+python3 x32_menu.py [host]     # interactive menu
+```

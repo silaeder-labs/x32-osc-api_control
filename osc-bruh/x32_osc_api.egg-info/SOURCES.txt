@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+x32.py
+x32_osc_api.egg-info/PKG-INFO
+x32_osc_api.egg-info/SOURCES.txt
+x32_osc_api.egg-info/dependency_links.txt
+x32_osc_api.egg-info/top_level.txt

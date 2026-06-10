@@ -1,0 +1,1194 @@
+openapi: 3.1.0
+info:
+  title: X32 REST API
+  version: 0.1.0
+paths:
+  /api/info:
+    get:
+      summary: Get Info
+      operationId: get_info_api_info_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/status:
+    get:
+      summary: Get Status
+      operationId: get_status_api_status_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/solo:
+    get:
+      summary: Get Solo
+      operationId: get_solo_api_solo_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/solo/clear:
+    post:
+      summary: Clear Solo
+      operationId: clear_solo_api_solo_clear_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/selidx:
+    get:
+      summary: Get Selidx
+      operationId: get_selidx_api_selidx_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+    put:
+      summary: Set Selidx
+      operationId: set_selidx_api_selidx_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              type: object
+              title: Body
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/channels/{num}:
+    get:
+      summary: Get Channel
+      operationId: get_channel_api_channels__num__get
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Channel
+      operationId: patch_channel_api_channels__num__patch
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChannelPatch'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/channels/{num}/eq/{band}:
+    get:
+      summary: Get Eq Band
+      operationId: get_eq_band_api_channels__num__eq__band__get
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      - name: band
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Band
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Eq Band
+      operationId: patch_eq_band_api_channels__num__eq__band__patch
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      - name: band
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Band
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EQBandPatch'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/channels/{num}/gate:
+    get:
+      summary: Get Gate
+      operationId: get_gate_api_channels__num__gate_get
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Gate
+      operationId: patch_gate_api_channels__num__gate_patch
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicsPatch'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/channels/{num}/dyn:
+    get:
+      summary: Get Dyn
+      operationId: get_dyn_api_channels__num__dyn_get
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Dyn
+      operationId: patch_dyn_api_channels__num__dyn_patch
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DynamicsPatch'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/auxins/{num}:
+    get:
+      summary: Get Auxin
+      operationId: get_auxin_api_auxins__num__get
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Auxin
+      operationId: patch_auxin_api_auxins__num__patch
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChannelPatch'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/buses/{num}:
+    get:
+      summary: Get Bus
+      operationId: get_bus_api_buses__num__get
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Bus
+      operationId: patch_bus_api_buses__num__patch
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FaderBody'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/main/st:
+    get:
+      summary: Get Main St
+      operationId: get_main_st_api_main_st_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+    patch:
+      summary: Patch Main St
+      operationId: patch_main_st_api_main_st_patch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FaderBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/main/m:
+    get:
+      summary: Get Main M
+      operationId: get_main_m_api_main_m_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+    patch:
+      summary: Patch Main M
+      operationId: patch_main_m_api_main_m_patch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FaderBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/dcas/{num}:
+    get:
+      summary: Get Dca
+      operationId: get_dca_api_dcas__num__get
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Dca
+      operationId: patch_dca_api_dcas__num__patch
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FaderBody'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/fx/{slot}:
+    get:
+      summary: Get Fx Type
+      operationId: get_fx_type_api_fx__slot__get
+      parameters:
+      - name: slot
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Slot
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/fx/{slot}/type:
+    put:
+      summary: Set Fx Type
+      operationId: set_fx_type_api_fx__slot__type_put
+      parameters:
+      - name: slot
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Slot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FXTypeBody'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/fx/{slot}/params/{param}:
+    get:
+      summary: Get Fx Param
+      operationId: get_fx_param_api_fx__slot__params__param__get
+      parameters:
+      - name: slot
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Slot
+      - name: param
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Param
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      summary: Set Fx Param
+      operationId: set_fx_param_api_fx__slot__params__param__put
+      parameters:
+      - name: slot
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Slot
+      - name: param
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Param
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FXParamBody'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/headamps/{idx}:
+    get:
+      summary: Get Headamp
+      operationId: get_headamp_api_headamps__idx__get
+      parameters:
+      - name: idx
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Idx
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      summary: Patch Headamp
+      operationId: patch_headamp_api_headamps__idx__patch
+      parameters:
+      - name: idx
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Idx
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HeadampPatch'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/scene/{num}:
+    post:
+      summary: Go Scene
+      operationId: go_scene_api_scene__num__post
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/cue/{num}:
+    post:
+      summary: Go Cue
+      operationId: go_cue_api_cue__num__post
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/snippet/{num}:
+    post:
+      summary: Go Snippet
+      operationId: go_snippet_api_snippet__num__post
+      parameters:
+      - name: num
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Num
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/usb:
+    get:
+      summary: Usb Status
+      operationId: usb_status_api_usb_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mounted:
+                    type: boolean
+                  path:
+                    type: string
+                    nullable: true
+                  tape_file:
+                    type: string
+                    nullable: true
+                  tape_state:
+                    type: integer
+                    nullable: true
+                  tape_time:
+                    type: number
+                    nullable: true
+                  tape_length:
+                    type: number
+                    nullable: true
+  /api/usb/list:
+    get:
+      summary: Usb List
+      operationId: usb_list_api_usb_list_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/usb/play:
+    post:
+      summary: Usb Play
+      operationId: usb_play_api_usb_play_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayBody'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/usb/stop:
+    post:
+      summary: Usb Stop
+      operationId: usb_stop_api_usb_stop_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/usb/pause:
+    post:
+      summary: Usb Pause
+      operationId: usb_pause_api_usb_pause_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/usb/next:
+    post:
+      summary: Usb Next
+      operationId: usb_next_api_usb_next_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/usb/prev:
+    post:
+      summary: Usb Prev
+      operationId: usb_prev_api_usb_prev_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /api/usb/cd:
+    post:
+      summary: Usb Cd
+      operationId: usb_cd_api_usb_cd_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              type: object
+              title: Body
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/xremote:
+    get:
+      summary: Get Xremote
+      operationId: get_xremote_api_xremote_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+    post:
+      summary: Set Xremote
+      operationId: set_xremote_api_xremote_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: true
+              type: object
+              title: Body
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /ws/faders:
+    get:
+      summary: WebSocket Fader Updates
+      description: Opens a WebSocket connection that pushes fader/on/name changes in real time.
+  /ws/tape:
+    get:
+      summary: WebSocket Tape Updates
+      description: Opens a WebSocket connection that pushes tape playback status (time, length, state, file) every second.
+  /health:
+    get:
+      summary: Health
+      operationId: health_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /:
+    get:
+      summary: Index
+      operationId: index__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+components:
+  schemas:
+    ChannelPatch:
+      properties:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        icon:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Icon
+        color:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Color
+        fader:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Fader
+        fader_db:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Fader Db
+        'on':
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: 'On'
+        pan:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Pan
+        st:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: St
+        mono:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Mono
+        trim:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Trim
+        phantom:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Phantom
+        invert:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Invert
+        hpf:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Hpf
+        delay_on:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Delay On
+        delay_time:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Delay Time
+        dca:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Dca
+        mute_grp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Mute Grp
+        insert:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Insert
+        insert_sel:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Insert Sel
+      type: object
+      title: ChannelPatch
+    DynamicsPatch:
+      properties:
+        'on':
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: 'On'
+        mode:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Mode
+        thr:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Thr
+        ratio:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Ratio
+        attack:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Attack
+        release:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Release
+        knee:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Knee
+        mgain:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Mgain
+      type: object
+      title: DynamicsPatch
+    EQBandPatch:
+      properties:
+        type:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Type
+        f:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: F
+        g:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: G
+        q:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Q
+      type: object
+      title: EQBandPatch
+    FXParamBody:
+      properties:
+        value:
+          type: number
+          title: Value
+      type: object
+      required:
+      - value
+      title: FXParamBody
+    FXTypeBody:
+      properties:
+        type:
+          type: string
+          title: Type
+      type: object
+      required:
+      - type
+      title: FXTypeBody
+    FaderBody:
+      properties:
+        fader:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Fader
+        fader_db:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Fader Db
+      type: object
+      title: FaderBody
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    HeadampPatch:
+      properties:
+        gain:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Gain
+        phantom:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Phantom
+      type: object
+      title: HeadampPatch
+    PlayBody:
+      properties:
+        pos:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Pos
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+      type: object
+      title: PlayBody
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

@@ -1,0 +1,6 @@
+services:
+  x32-api:
+    build: .
+    ports:
+      - "8080:8080"
+    command: ["--mixer", "192.168.1.108"]
