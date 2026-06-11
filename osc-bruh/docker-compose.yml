@@ -1,5 +1,6 @@
 services:
   x32-api:
+    image: ghcr.io/silaeder-labs/x32-osc-api_control:latest
     build: .
     ports:
       - "8080:8080"
